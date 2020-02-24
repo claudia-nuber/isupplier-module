@@ -16,6 +16,20 @@
             background-color: yellow;
             padding: 10px;
         }
+        .table1 {
+            max-width:1024px; 
+            padding:1em;
+        }
+        .firstDiv {
+            padding:10px; 
+            background-color: white;
+        }
+        .secondDiv {
+            color:#303030; 
+            margin:0; margin-bottom:0.5em; 
+            font-weight:bold; 
+            font-size:1.4em;
+        }
     </style>
 </head>
 
@@ -39,14 +53,14 @@
                         informazioni o eventuali richieste contattare <a href="mailto:info@pizzeriadamichele.it"
                             target="_blank" rel="noreferrer">
                             info@pizzeriadamichele.it</a></h4>
-                    <table border="0" cellpadding="0" cellspacing="0" style="background-color:#ff375f; width:100%">
+                    <table border="0" cellpadding="0" cellspacing="0" style="background-color:#ff375f; width:100%"><!--nu reusesc sa modific css-->
                         <tbody>
                             <tr>
                                 <td>&nbsp;</td>
-                                <td style="max-width:1024px; padding:1em">
+                                <td class="table1">
                                     <div>
                                         <span></span>
-                                        <div style="padding:10px; background-color:#ffffff">
+                                        <div class="firstDiv">
                                             <table style="width:100%">
                                                 <tbody>
                                                     <tr>
@@ -56,7 +70,7 @@
                                                                 src="http://www.pizzeriadamichele.it/images/logo-pizzeria-da-michele.png">
                                                         </td>
                                                         <td style="vertical-align:middle; padding-left:0.6em">
-                                                            <span
+                                                            <span class="firstParaghraphText"
                                                                 style="color:#606060; margin:0; font-size:1.8em; font-weight: 500">Ordine
                                                                 per sede <th:block th:text="${order.location.name}">
                                                                 </th:block></span>
@@ -75,12 +89,11 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <td>
-                                                                            <div
-                                                                                style="color:#303030; margin:0; margin-bottom:0.5em; font-weight:bold; font-size:1.4em;">
+                                                                            <div class="secondDiv"
+                                                                            >
                                                                                 Ordine da consegnare in
-                                                                                <th:block
-                                                                                    th:text="${order.orderNumber}">
-                                                                                </th:block>
+                                                                                <th:block th:text="${order.location.name}">
+                                                                </th:block>
                                                                             </div>
                                                                             <div style="font-family:verdana">
                                                                                 Spett. Le <span
