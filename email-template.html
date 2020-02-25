@@ -12,23 +12,37 @@
             margin-bottom: 0;
         }
 
-        .important-message {
-            background-color: yellow;
+        .warning-box {
+            background-color: rgb(255, 204, 0);
+            font-weight: bold;
             padding: 10px;
         }
+
         .table1 {
-            max-width:1024px; 
-            padding:1em;
+            max-width: 1024px;
+            padding: 1em;
         }
+
         .firstDiv {
-            padding:10px; 
+            padding: 10px;
             background-color: white;
         }
+
         .secondDiv {
-            color:#303030; 
-            margin:0; margin-bottom:0.5em; 
-            font-weight:bold; 
-            font-size:1.4em;
+            color: #303030;
+            margin: 0;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+            font-size: 1.4em;
+        }
+
+        #header-box-wrapper {
+            clear: both;
+
+        }
+
+        #header-box-wrapper div {
+            float: left;
         }
     </style>
 </head>
@@ -36,93 +50,97 @@
 <body>
 
 
-    <body dir="ltr">
-
-        <div dir="auto">
-            <blockquote type="cite">
-                <div dir="ltr">
-                </div>
-            </blockquote>
-            <div dir="ltr">
-                <span></span>
+    <body>
+        <div class="warning-box">
+            <p>Attenzione: Si prega di non rispondere alla
+                presente mail generata da un sistema di invio automatico. Per ulteriori
+                informazioni o eventuali richieste contattare <a href="mailto:info@pizzeriadamichele.it" target="_blank"
+                    rel="noreferrer">
+                    info@pizzeriadamichele.it</a></p>
+        </div>
+        <div id="header-box-wrapper">
+            <div>
+                <img width="80" style="width:120px" data-outlook-trace="F:0|T:2"
+                    src="http://www.pizzeriadamichele.it/images/logo-pizzeria-da-michele.png">
             </div>
-            <blockquote type="cite">
-                <div dir="ltr">
-                    <h4 class="important-message">Attenzione - Si prega di non rispondere alla
-                        presente mail generata da un sistema di invio automatico. Per ulteriori
-                        informazioni o eventuali richieste contattare <a href="mailto:info@pizzeriadamichele.it"
-                            target="_blank" rel="noreferrer">
-                            info@pizzeriadamichele.it</a></h4>
-                    <table border="0" cellpadding="0" cellspacing="0" style="background-color:#ff375f; width:100%"><!--nu reusesc sa modific css-->
-                        <tbody>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td class="table1">
-                                    <div>
-                                        <span></span>
-                                        <div class="firstDiv">
-                                            <table style="width:100%">
-                                                <tbody>
-                                                    <tr>
-                                                        <td width="80">
-                                                            <img width="80" style="width:120px"
-                                                                data-outlook-trace="F:0|T:2"
-                                                                src="http://www.pizzeriadamichele.it/images/logo-pizzeria-da-michele.png">
-                                                        </td>
-                                                        <td style="vertical-align:middle; padding-left:0.6em">
-                                                            <span class="firstParaghraphText"
-                                                                style="color:#606060; margin:0; font-size:1.8em; font-weight: 500">Ordine
-                                                                per sede <th:block th:text="${order.location.name}">
-                                                                </th:block></span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2">
-                                                            <div style="border-top:1px solid silver; font-size:1px">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2">
-                                                            <table border="0" cellpadding="0" cellspacing="0"
-                                                                style="width:100%">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="secondDiv"
-                                                                            >
-                                                                                Ordine da consegnare in
-                                                                                <th:block th:text="${order.location.name}">
-                                                                </th:block>
-                                                                            </div>
-                                                                            <div style="font-family:verdana">
-                                                                                Spett. Le <span
-                                                                                    style="color:#303030; margin:0; margin-bottom:0.5em; font-weight:bold; font-size:1.1em">
-                                                                                    <th:block
-                                                                                        th:text="${supplier.alias}">
-                                                                                    </th:block>
-                                                                                </span>, <br>
-                                                                                vorremmo effettuare
-                                                                                l'ordine di seguito.
-                                                                            </div>
-                                                                            <div>
-                                                                                <div style="font-family:verdana">
-                                                                                    <div
-                                                                                        style="padding:10px; background-color:#ffffff">
+            <div>
+                <span class="firstParaghraphText"
+                    style="color:#606060; margin:0; font-size:1.8em; font-weight: 500">Ordine
+                    per sede <th:block th:text="${order.location.name}">
+                    </th:block></span>
+            </div>
+        </div>
+        <div style="display: block;"></div>
+        <hr>
 
-                                                                                        <div>Sede:
-                                                                                            <b>
-                                                                                                <th:block
-                                                                                                    th:text="${order.location.name}">
-                                                                                                </th:block>
-                                                                                            </b>
-                                                                                        </div>
-                                                                                        <hr>
-                                                                                        <div>Data di
-                                                                                            consegna
-                                                                                            prevista:
-                                                                                            <b>
-                                                                                                <th:block th:text="${#temporals.format(order.expectedDeliveryDate,'dd-MM-yyyy')}"></th:block>
+        <div>
+            <div class="secondDiv">
+                Ordine da consegnare in
+                <th:block th:text="${order.location.name}">
+                </th:block>
+            </div>
+            <div style="font-family:verdana">
+                Spett. Le <span style="color:#303030; margin:0; margin-bottom:0.5em; font-weight:bold; font-size:1.1em">
+                    <th:block th:text="${supplier.alias}">
+                    </th:block>
+                </span>, <br>
+                vorremmo effettuare
+                l'ordine di seguito.
+            </div>
+            <div>Sede:
+                <b>
+                    <th:block th:text="${order.location.name}">
+                    </th:block>
+                </b>
+            </div>
+        </div>
+
+
+
+
+
+        <table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+
+            <tbody>
+                <tr>
+                    <td class="table1">
+                        <div>
+                            <div class="firstDiv">
+                                <table style="width:100%">
+                                    <tbody>
+                                        <tr>
+                                            <td width="80">
+
+                                            </td>
+                                            <td style="vertical-align:middle; padding-left:0.6em">
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div style="border-top:1px solid silver; font-size:1px">
+                                                    &nbsp;</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+
+                                                                <div>
+                                                                    <div style="font-family:verdana">
+                                                                        <div
+                                                                            style="padding:10px; background-color:#ffffff">
+
+
+                                                                            <hr>
+                                                                            <div>Data di
+                                                                                consegna
+                                                                                prevista:
+                                                                                <b>
+                                                                                    <th:block th:text="${#temporals.format(order.expectedDeliveryDate,'dd-MM-yyyy')}"></th:block>
                                                                                                 </b>
                                                                                                 alle
                                                                                                 <b>
@@ -243,10 +261,6 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                </div>
-                            </blockquote>
-                        </div>>
-    </div>
     </body>
     
 </body>
