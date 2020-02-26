@@ -7,6 +7,10 @@
     <title>Document</title>
     <meta http-equiv="Content-Type" content="text/html;">
     <style type="text/css" style="display:none;">
+        html {
+            margin: 10px;
+        }
+
         P {
             margin-top: 0;
             margin-bottom: 0;
@@ -18,32 +22,24 @@
             padding: 10px;
         }
 
-        .table1 {
-            max-width: 1024px;
-            padding: 1em;
-        }
-
-        .firstDiv {
-            padding: 10px;
-            background-color: white;
-        }
-
-        .secondDiv {
-            color: #303030;
-            margin: 0;
-            margin-bottom: 0.5em;
-            font-weight: bold;
-            font-size: 1.4em;
-        }
-
         #header-box-wrapper {
-            clear: both;
-
+            width: 100%;
+            margin: 0;
         }
 
-        #header-box-wrapper div {
+        #logo {
+            width: 20%;
+            margin: 0;
             float: left;
         }
+
+        #wrapper-text {
+            width: 70%;
+            margin: 0;
+            float: left;
+        }
+
+        #location-infomation {}
     </style>
 </head>
 
@@ -59,124 +55,58 @@
                     info@pizzeriadamichele.it</a></p>
         </div>
         <div id="header-box-wrapper">
-            <div>
+            <div id="logo">
                 <img width="80" style="width:120px" data-outlook-trace="F:0|T:2"
                     src="http://www.pizzeriadamichele.it/images/logo-pizzeria-da-michele.png">
             </div>
-            <div>
-                <span class="firstParaghraphText"
-                    style="color:#606060; margin:0; font-size:1.8em; font-weight: 500">Ordine
+            <div id="wrapper-text">
+                <span style="color:#606060;  margin:60px; font-size:1.8em; font-weight: 500">Ordine
                     per sede <th:block th:text="${order.location.name}">
                     </th:block></span>
             </div>
         </div>
-        <div style="display: block;"></div>
+        <br><br><br> <br>
         <hr>
 
-        <div>
-            <div class="secondDiv">
-                Ordine da consegnare in
-                <th:block th:text="${order.location.name}">
-                </th:block>
+        <div id="location-information">
+            <div>
+                Ordine da consegnare in <th:block th:text="${order.location.name}"></th:block>
             </div>
-            <div style="font-family:verdana">
+            <div style="font-family:verdana; ">
                 Spett. Le <span style="color:#303030; margin:0; margin-bottom:0.5em; font-weight:bold; font-size:1.1em">
-                    <th:block th:text="${supplier.alias}">
-                    </th:block>
-                </span>, <br>
-                vorremmo effettuare
-                l'ordine di seguito.
+                    <th:block th:text="${supplier.alias}"></th:block>
+                </span>,vorremmo effettuare l'ordine di seguito.
             </div>
-            <div>Sede:
-                <b>
-                    <th:block th:text="${order.location.name}">
-                    </th:block>
-                </b>
+            <div>
+                Sede:<th:block th:text="${order.location.name}"></th:block>
             </div>
         </div>
+        <hr>
+        <div>Data di consegna prevista:<th:block th:text="${#temporals.format(order.expectedDeliveryDate,'dd-MM-yyyy')}"></th:block>alle </div>
+       <div style="margin-top:0.6em">Codice ordine:<th:block th:text="${order.orderNumber}"></th:block>- articoli:<th:block th:text="${#lists.size(orderItemsBySupplier.items)}"></th:block>
+       </div></div>
 
 
-
-
-
-        <table border="0" cellpadding="0" cellspacing="0" style="width:100%">
-
-            <tbody>
-                <tr>
-                    <td class="table1">
-                        <div>
-                            <div class="firstDiv">
-                                <table style="width:100%">
-                                    <tbody>
-                                        <tr>
-                                            <td width="80">
-
-                                            </td>
-                                            <td style="vertical-align:middle; padding-left:0.6em">
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                <div style="border-top:1px solid silver; font-size:1px">
-                                                    &nbsp;</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                <table border="0" cellpadding="0" cellspacing="0" style="width:100%">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-
-                                                                <div>
-                                                                    <div style="font-family:verdana">
-                                                                        <div
-                                                                            style="padding:10px; background-color:#ffffff">
-
-
-                                                                            <hr>
-                                                                            <div>Data di
-                                                                                consegna
-                                                                                prevista:
-                                                                                <b>
-                                                                                    <th:block th:text="${#temporals.format(order.expectedDeliveryDate,'dd-MM-yyyy')}"></th:block>
-                                                                                                </b>
-                                                                                                alle
-                                                                                                <b>
-                                                                                                    <th:block th:text="${#temporals.format(order.expectedDeliveryDate,'HH:mm')}"></th:block>
-                                                                                                </b>
-                                                                                            </div>
-                                                                                            <div style="margin-top:0.6em">Codice ordine:
-                                                                                                <b>
-                                                                                                    <th:block th:text="${order.orderNumber}"></th:block>
-                                                                                                </b>
-                                                                                                - articoli:
-                                                                                                <b>
-                                                                                                    <th:block th:text="${#lists.size(orderItemsBySupplier.items)}"></th:block>
-                                                                                                </b>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <table border="1" cellpadding="5" cellspacing="2" style="border:1px solid gray; border-collapse:collapse;width:100%">
-                                                                                            <thead>
-                                                                                            <tr style="text-align: left;">
-                                                                                                <th style="border:1px solid gray; background-color:#f1f1f1">
-                                                                                                    <b>Nome</b>
-                                                                                                </th>
-                                                                                                <th style="border:1px solid gray; background-color:#f1f1f1">
-                                                                                                    <b>Descrizione</b>
-                                                                                                </th>
-                                                                                                <th style="border:1px solid gray; background-color:#f1f1f1">
-                                                                                                    <b>Tipo quantita</b>
-                                                                                                </th>
-                                                                                                <th style="border:1px solid gray; background-color:#f1f1f1">
-                                                                                                    <b>Quantita</b>
-                                                                                                </th>
-                                                                                                <th style="border:1px solid gray; background-color:#f1f1f1">
-                                                                                                    <b>Note</b>
-                                                                                                </th>
-                                                                                            </tr>
-                                                                                            </thead>
+       <table border="1" cellpadding="5" cellspacing="2" style="border:1px solid gray; border-collapse:collapse;width:100%">
+       <thead>
+         <tr style="text-align: left;">
+           <th style="border:1px solid gray; background-color:#f1f1f1">
+           <b>Nome</b>
+           </th>
+           <th style="border:1px solid gray; background-color:#f1f1f1">
+<b>Descrizione</b>
+           </th>
+           <th style="border:1px solid gray; background-color:#f1f1f1">
+           <b>Tipo quantita</b>
+           </th>
+           <th style="border:1px solid gray; background-color:#f1f1f1">
+            <b>Quantita</b>
+           </th>
+           <th style="border:1px solid gray; background-color:#f1f1f1">
+        <b>Note</b>
+          </th>
+           </tr>
+          </thead>
                                                                                             <tbody>
                                                                                             <tr th:each="item,iter : ${orderItemsBySupplier.items}">
                                                                                                 <td style="border:1px solid gray">
@@ -253,14 +183,7 @@
                                                                 </td>
                                                             </tr>
                                                             </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                            
     </body>
     
 </body>
