@@ -1,190 +1,176 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <meta http-equiv="Content-Type" content="text/html;">
-    <style type="text/css" style="display:none;">
-        html {
-            margin: 10px;
-        }
-
-        P {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-
-        .warning-box {
-            background-color: rgb(255, 204, 0);
-            font-weight: bold;
-            padding: 10px;
-        }
-
-        #header-box-wrapper {
-            width: 100%;
-            margin: 0;
-        }
-
-        #logo {
-            width: 20%;
-            margin: 0;
-            float: left;
-        }
-
-        #wrapper-text {
-            width: 70%;
-            margin: 0;
-            float: left;
-        }
-
-        
-    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Ordine per Pizzeria Da Michele</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
-<body>
-
-
-    <body>
-        <div class="warning-box">
-            <p>Attenzione: Si prega di non rispondere alla
+<body style="margin: 0; padding: 0;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f1f1f1; font-family: 'Source Sans Pro',Helvetica,Arial,sans-serif;">
+        <tr>
+            <td style="background-color:rgb(255, 204, 0); padding: 0 10px;">
+                <p>
+                    <b>Attenzione:</b> Si prega di non rispondere alla
                 presente mail generata da un sistema di invio automatico. Per ulteriori
                 informazioni o eventuali richieste contattare <a href="mailto:info@pizzeriadamichele.it" target="_blank"
                     rel="noreferrer">
-                    info@pizzeriadamichele.it</a></p>
-        </div>
-        <div id="header-box-wrapper">
-            <div id="logo">
-                <img width="80" style="width:120px" data-outlook-trace="F:0|T:2"
-                    src="http://www.pizzeriadamichele.it/images/logo-pizzeria-da-michele.png">
-            </div>
-            <div id="wrapper-text">
-                <span style="color:#606060;  margin:60px; font-size:1.8em; font-weight: 500">Ordine
-                    per sede <th:block th:text="${order.location.name}">
-                    </th:block></span>
-            </div>
-        </div>
-        <br><br><br> <br>
-        <hr>
-
-        <div id="location-information">
-            <div>
-                Ordine da consegnare in <th:block th:text="${order.location.name}"></th:block>
-            </div>
-            <div style="font-family:verdana; ">
-                Spett. Le <span style="color:#303030; margin:0; margin-bottom:0.5em; font-weight:bold; font-size:1.1em">
-                    <th:block th:text="${supplier.alias}"></th:block>
-                </span>,vorremmo effettuare l'ordine di seguito.
-            </div>
-            <div>
-                Sede:<th:block th:text="${order.location.name}"></th:block>
-            </div>
-        </div>
-        <hr>
-        <div>Data di consegna prevista:<th:block th:text="${#temporals.format(order.expectedDeliveryDate,'dd-MM-yyyy')}"></th:block>alle </div>
-       <div style="margin-top:0.6em">Codice ordine:<th:block th:text="${order.orderNumber}"></th:block>- articoli:<th:block th:text="${#lists.size(orderItemsBySupplier.items)}"></th:block>
-       </div></div>
-
-
-       <table border="1" cellpadding="5" cellspacing="2" style="border:1px solid gray; border-collapse:collapse;width:100%">
-       <thead>
-         <tr style="text-align: left;">
-           <th style="border:1px solid gray; background-color:#f1f1f1">
-           <b>Nome</b>
-           </th>
-           <th style="border:1px solid gray; background-color:#f1f1f1">
-<b>Descrizione</b>
-           </th>
-           <th style="border:1px solid gray; background-color:#f1f1f1">
-           <b>Tipo quantita</b>
-           </th>
-           <th style="border:1px solid gray; background-color:#f1f1f1">
-            <b>Quantita</b>
-           </th>
-           <th style="border:1px solid gray; background-color:#f1f1f1">
-        <b>Note</b>
-          </th>
-           </tr>
-          </thead>
-                                                                                            <tbody>
-                                                                                            <tr th:each="item,iter : ${orderItemsBySupplier.items}">
-                                                                                                <td style="border:1px solid gray">
-                                                                                                    <div>
-                                                                                                        <th:block
-                                                                                                                th:text="${item.product.name}"></th:block>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                                <td style="border:1px solid gray">
-                                                                                                    <div>
-                                                                                                        <th:block
-                                                                                                                th:text="${item.product.description}"></th:block>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                                <td style="border:1px solid gray">
-                                                                                                    <th:block
-                                                                                                            th:text="${item.product.quantityType}"></th:block>
-                                                                                                </td>
-                                                                                                <td style="border:1px solid gray">
-                                                                                                    <b>
-                                                                                                        <th:block
-                                                                                                                th:text="${item.quantity}"></th:block>
-                                                                                                    </b>
-                                                                                                </td>
-                                                                                                <td style="border:1px solid gray">
-                                                                                                    <b>
-                                                                                                        <th:block
-                                                                                                                th:text="${item.note}"></th:block>
-                                                                                                    </b>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                        </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div style="padding-top:10px; text-align:center; background: #f1f1f1">
-                                                        <br>
-                                                        <table border="0" cellpadding="0" cellspacing="0" style="width:100%">
-                                                            <tbody>
-                                                            <tr>
-                                                                <td style="font-size:14px; color:#302f2f; text-align:center">
-                                                                    <span>© 2020 DM S.R.L.</span>
-                                                                    <br>
-                                                                    <span>Via San Donà, 223 </span> -
-                                                                    <span>30174 </span>-
-                                                                    <span>Venezia-Mestre, Italia
-                                                                                </span>
-                                                                    <br>
-                                                                    <span style="color:gray; font-size:0.6em">&nbsp;
-                                                                                    <br>
-                                                                                </span>P.IVA 04000770273
-                                                                    <br>
-                                                                    <span style="color:gray; font-size:0.6em">&nbsp;
-                                                                                    <br>
-                                                                                </span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="font-size:12px; color:#302f2f; text-align:center; padding-bottom: 10px;">
-                                                                    <a href="http://www.pizzeriadamichele.it" target="_blank" rel="noreferrer">http://www.pizzeriadamichele.it</a> &nbsp;
-                                                                    <span style="color:gray">|</span> &nbsp;
-                                                                    <a href="mailto:info@pizzeriadamichele.it"
-                                                                       target="_blank" rel="noreferrer">
-                                                                        info@pizzeriadamichele.it</a>
-                                                                </td>
-                                                            </tr>
-                                                            </tbody>
-                            
-    </body>
-    
+                    info@pizzeriadamichele.it</a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" bgcolor="#ffffff" style="border-collapse: collapse; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0"
+                                style="display:block;min-width:100%!important" >
+                                <tbody>
+                                    <tr>
+                                        <td class="m_-3926768785365665781headerImage" width="100%" align="center"
+                                            style="text-align:center; padding: 10px 0 0 0;">
+                                            <a href="http://www.pizzeriadamichele.it" target="_blank">
+                                                <img width="150" src="http://www.pizzeriadamichele.it/images/logo-pizzeria-da-michele.png">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; color:#303030; font-size:1.8em;">
+                            <hr>
+                            <p>
+                                Ordine da Pizzeria DaMichele,
+                                <br>sede <th:block th:text="${order.location.name}"></th:block>
+                            </p>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; font-family:'Helvetica neue',Helvetica,Arial,Verdana,sans-serif;font-size:14px;line-height:22px;color:#303030;text-align:left">
+                            <p>
+                                Spett. Le&nbsp;<th:block th:text="${supplier.alias}"></th:block>, 
+                                <br>vorremmo effettuare l'ordine di seguito.
+                            </p>
+                             <hr>
+                            <p>
+                                Consegnare in&nbsp;<span style="color:#303030; margin:0; margin-bottom:0.5em;"><b><th:block th:text="${order.location.address}"></th:block></b></span>
+                            </p>
+                           
+                            <p th:if="${order.expectedDeliveryDate}">
+                                Data di consegna richiesta:&nbsp;
+                                <b><th:block th:text="${#temporals.format(order.expectedDeliveryDate,'dd-MM-yyyy')}"></th:block></b>
+                                &nbsp;alle&nbsp;
+                                <b><th:block th:text="${#temporals.format(order.expectedDeliveryDate,'HH:mm')}"></th:block></b>
+                            </p>
+                            <p>
+                                Ordine&nbsp;#<b><th:block th:text="${order.orderNumber}"></th:block></b>
+                                <br>
+                                Totale articoli:&nbsp;<b><th:block th:text="${#lists.size(orderItemsBySupplier.items)}"></th:block></b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="5" cellspacing="0" style="padding: 0 10px;">
+                                <thead style="text-align: center; background-color:rgb(229, 229, 234); color: rgb(44, 44, 46);">
+                                    <tr>
+                                        <th>
+                                            Articolo
+                                        </th>
+                                        <th >
+                                            Descrizione
+                                        </th>
+                                        <th >
+                                            Tipo qta.
+                                        </th>
+                                        <th>
+                                            Qta.
+                                        </th>
+                                        <th>
+                                            Note
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="item,iter : ${orderItemsBySupplier.items}">
+                                    <td style="border-bottom: 1px solid gray;">
+                                        <div>
+                                            <th:block
+                                                    th:text="${item.product.name}"></th:block>
+                                        </div>
+                                    </td>
+                                    <td style="border-bottom: 1px solid gray;">
+                                        <div>
+                                            <th:block
+                                                    th:text="${item.product.description}"></th:block>
+                                        </div>
+                                    </td>
+                                    <td style="border-bottom: 1px solid gray;">
+                                        <th:block
+                                                th:text="${item.product.quantityType}"></th:block>
+                                    </td>
+                                    <td style="border-bottom: 1px solid gray;">
+                                        <b>
+                                            <th:block
+                                                    th:text="${item.quantity}"></th:block>
+                                        </b>
+                                    </td>
+                                    <td style="border-bottom: 1px solid gray;">
+                                        <i>
+                                            <th:block
+                                                    th:text="${item.note}"></th:block>
+                                        </i>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:rgb(58, 58, 60)">
+                            <br>
+                            <br>
+                            <table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="font-size:14px; color:#ffffff; text-align:center">
+                                        <p>
+                                        DM S.R.L.
+                                        <br>
+                                        Via San Donà, 223 - 30174 - Venezia-Mestre, Italia
+                                        <br>
+                                        P.IVA 04000770273
+                                        <br>
+                                        <a href="mailto:info@pizzeriadamichele.it"
+                                           target="_blank" rel="noreferrer">
+                                            info@pizzeriadamichele.it</a>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size:12px; text-align:center; padding-bottom: 10px; background-color:rgb(229, 229, 234)">
+                                        <p>
+                                        &copy; <th:block th:text="${#temporals.format(order.audit.createdDate,'YYYY')}"></th:block>
+                                        &nbsp;<a href="http://www.pizzeriadamichele.it" target="_blank" rel="noreferrer">http://www.pizzeriadamichele.it</a>
+                                        <br>
+                                        </p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
+
 </html>
